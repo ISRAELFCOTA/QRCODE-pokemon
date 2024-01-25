@@ -16,6 +16,8 @@ import { StatusBar } from "expo-status-bar";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { PokeDto } from "../../Dto/pokemon";
 import { pokeService } from "../../services/api";
+import { Entypo } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
 
 interface RouteParams {
   poke: PokeDto;
@@ -52,7 +54,9 @@ const PokeDetails: React.FunctionComponent = () => {
       <StatusBar translucent backgroundColor="transparent" />
       <Content>
         <Header>
-          <ButtonVoltar></ButtonVoltar>
+          <ButtonVoltar onPress={goBack}>
+            <Entypo name="home" size={RFValue(28)} color="#fff" />
+          </ButtonVoltar>
           <PokeName> ID: {pokeDetails.id}</PokeName>
         </Header>
         <SpritePoke

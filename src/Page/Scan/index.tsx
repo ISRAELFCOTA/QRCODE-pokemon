@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Alert, Button } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
 import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
-import { Container } from "./styles";
+import {
+  CodeScannerWrapper,
+  Container,
+  Content,
+  Load,
+  ScanInfo,
+} from "./styles";
 import { pokeService } from "../../services/api";
+import { StatusBar } from "expo-status-bar";
+import { Feather } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
+import { BorderedWrapper } from "../../Components/BorderedWrapper";
 
 interface ScreenNavigationProp {
   navigate: (screen: string, params?: unknown) => void;
@@ -16,9 +26,9 @@ export const Scan: React.FunctionComponent = () => {
   const navigation = useNavigation();
   const { navigate } = useNavigation<ScreenNavigationProp>();
 
-  const handleGoBack = useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
+  const goBack = useCallback(() => {
+    navigate("Home");
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -26,7 +36,7 @@ export const Scan: React.FunctionComponent = () => {
       setHasPermission(status === "granted");
 
       if (status === "denied") {
-        handleGoBack();
+        goBack();
         return Alert.alert(
           "Pokemon Teste",
           "Permita acesso à câmera para poder escanear o QR Code."
@@ -56,16 +66,27 @@ export const Scan: React.FunctionComponent = () => {
 
   return (
     <Container>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={{ flex: 1 }}
-      />
-      {scanned && (
-        <Button
-          title="Toque na tela novamente"
-          onPress={() => setScanned(false)}
-        />
-      )}
+      <StatusBar translucent backgroundColor="transparent" />
+      <TouchableOpacity onPress={goBack}>
+        <Feather name="chevron-left" size={RFValue(28)} color="#fff" />
+      </TouchableOpacity>
+      <Content>
+        {hasPermission && (
+          <BorderedWrapper>
+            <CodeScannerWrapper>
+              <BarCodeScanner
+                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                style={{ flex: 1 }}
+              />
+            </CodeScannerWrapper>
+          </BorderedWrapper>
+        )}
+        {isLoadingScan ? (
+          <Load color="#fff" />
+        ) : (
+          <ScanInfo>Aponte a câmera para o código QR</ScanInfo>
+        )}
+      </Content>
     </Container>
   );
 };
