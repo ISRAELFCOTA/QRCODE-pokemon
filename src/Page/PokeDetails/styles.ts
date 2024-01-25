@@ -23,11 +23,11 @@ export const PokeId = styled.Text`
   align-self: center;
   font-size: ${RFValue(20)}px;
   font-weight: bold;
-  color: #e3e949;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const PokeName = styled.Text`
-  color: #e3e949;
+  color: ${({ theme }) => theme.colors.primary};
   font-size: ${RFValue(20)}px;
 `;
 
@@ -51,18 +51,18 @@ export const DetailName = styled.Text`
   font-size: ${RFValue(18)}px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #e3e949;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const DetailType = styled.Text`
   font-size: ${RFValue(18)}px;
   font-weight: bold;
   text-transform: capitalize;
-  color: #e3e949;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const DetailTitle = styled.Text`
   font-size: ${RFValue(18)}px;
   font-weight: bold;
-  color: #e3e949;
+  color: ${({ theme }) => theme.colors.primary};
 `;

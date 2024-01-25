@@ -10,14 +10,14 @@ export const Context = styled.View`
   padding: ${RFValue(32)}px ${RFValue(16)}px;
 `;
 export const Name = styled.Text`
-  color: red;
+  color: ${({ theme }) => theme.colors.secondary};
   font-size: ${RFValue(20)}px;
 `;
 
 export const Button = styled.TouchableOpacity`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
   padding: ${RFValue(20)}px;
   border-radius: ${RFValue(2)}px;
   border-style: solid;
-  border-color: #000;
+  border-color: ${({ theme }) => theme.colors.black};
 `;

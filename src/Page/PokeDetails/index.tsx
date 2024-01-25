@@ -18,6 +18,8 @@ import { PokeDto } from "../../Dto/pokemon";
 import { pokeService } from "../../services/api";
 import { Entypo } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
+import theme from "../../Global/Styles/theme";
+import { Alert } from "react-native";
 
 interface RouteParams {
   poke: PokeDto;
@@ -42,7 +44,7 @@ const PokeDetails: React.FunctionComponent = () => {
         const { data } = await pokeService.getPoke(poke.id);
         setPokeDetails(data);
       } catch (error) {
-        console.error("Erro ao carregar detalhes do Pokémon:", error);
+        Alert.alert("QRCODE-poke", "Não foi possível escanear o qrcode.");
       }
     };
 
@@ -55,7 +57,7 @@ const PokeDetails: React.FunctionComponent = () => {
       <Content>
         <Header>
           <ButtonVoltar onPress={goBack}>
-            <Entypo name="home" size={RFValue(28)} color="#fff" />
+            <Entypo name="home" size={RFValue(28)} color={theme.colors.white} />
           </ButtonVoltar>
           <PokeName> ID: {pokeDetails.id}</PokeName>
         </Header>

@@ -11,7 +11,7 @@ export const TopLeftHorizontalBorder = styled.View`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const TopLeftVerticalBorder = styled.View`
@@ -20,7 +20,7 @@ export const TopLeftVerticalBorder = styled.View`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const TopRightHorizontalBorder = styled.View`
@@ -29,7 +29,7 @@ export const TopRightHorizontalBorder = styled.View`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const TopRightVerticalBorder = styled.View`
@@ -38,7 +38,7 @@ export const TopRightVerticalBorder = styled.View`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const BottomLeftHorizontalBorder = styled.View`
@@ -47,7 +47,7 @@ export const BottomLeftHorizontalBorder = styled.View`
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const BottomLeftVerticalBorder = styled.View`
@@ -56,7 +56,7 @@ export const BottomLeftVerticalBorder = styled.View`
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const BottomRightHorizontalBorder = styled.View`
@@ -65,7 +65,7 @@ export const BottomRightHorizontalBorder = styled.View`
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const BottomRightVerticalBorder = styled.View`
@@ -74,5 +74,5 @@ export const BottomRightVerticalBorder = styled.View`
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 `;

@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 export const Container = styled(SafeAreaView)`
   flex: 1;
-  background-color: #000;
+  background-color: ${({ theme }) => theme.colors.black};
   justify-content: space-between;
 `;
 export const Context = styled.View`
@@ -29,7 +29,7 @@ export const CodeScannerWrapper = styled.View`
 export const ScanInfo = styled.Text`
   font-size: ${RFValue(15)}px;
   font-weight: 500;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   margin-top: ${RFValue(16)}px;
 `;
 

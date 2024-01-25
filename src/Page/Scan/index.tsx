@@ -14,6 +14,7 @@ import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import { BorderedWrapper } from "../../Components/BorderedWrapper";
+import theme from "../../Global/Styles/theme";
 
 interface ScreenNavigationProp {
   navigate: (screen: string, params?: unknown) => void;
@@ -55,8 +56,7 @@ export const Scan: React.FunctionComponent = () => {
         const response = await pokeService.getPoke(id);
         navigate("PokeDetails", { poke: response.data });
       } catch (error) {
-        console.log(error);
-        Alert.alert("testeRemopt", "Não foi possível escanear o QR Code.");
+        Alert.alert("QRCODE-poke", "Não foi possível escanear o qrcode.");
       } finally {
         setIsLoadingScan(false);
       }
@@ -68,7 +68,11 @@ export const Scan: React.FunctionComponent = () => {
     <Container>
       <StatusBar translucent backgroundColor="transparent" />
       <TouchableOpacity onPress={goBack}>
-        <Feather name="chevron-left" size={RFValue(28)} color="#fff" />
+        <Feather
+          name="chevron-left"
+          size={RFValue(28)}
+          color={theme.colors.white}
+        />
       </TouchableOpacity>
       <Content>
         {hasPermission && (
@@ -82,7 +86,7 @@ export const Scan: React.FunctionComponent = () => {
           </BorderedWrapper>
         )}
         {isLoadingScan ? (
-          <Load color="#fff" />
+          <Load color={theme.colors.white} />
         ) : (
           <ScanInfo>Aponte a câmera para o código QR</ScanInfo>
         )}
